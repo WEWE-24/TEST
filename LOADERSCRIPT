@@ -91,7 +91,8 @@ SearchBox.Position = UDim2.new(0, 10, 0, 45)
 SearchBox.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
 SearchBox.TextColor3 = Color3.new(1, 1, 1)
 SearchBox.Font = Enum.Font.Gotham
-SearchBox.PlaceholderText = "Rechercher un script..."
+SearchBox.PlaceholderText = "Search for a script..."
+TextBox.Text = ""
 SearchBox.TextSize = 16
 SearchBox.ClearTextOnFocus = false
 SearchBox.Parent = Frame
@@ -123,26 +124,26 @@ StatusLabel.Parent = Frame
 
 -- Fonction pour charger et exécuter le script depuis une URL
 local function executeScriptFromUrl(url)
-    StatusLabel.Text = "Téléchargement en cours..."
+    StatusLabel.Text = "Downloading in progress..."
     local success, result = pcall(function()
         return game:HttpGet(url)
     end)
 
     if success then
-        StatusLabel.Text = "Exécution du script..."
+        StatusLabel.Text = "Running the script..."
         local func, err = loadstring(result)
         if func then
             local ok, err2 = pcall(func)
             if ok then
-                StatusLabel.Text = "Script exécuté avec succès."
+                StatusLabel.Text = "Script executed successfully."
             else
-                StatusLabel.Text = "Erreur lors de l'exécution: "..tostring(err2)
+                StatusLabel.Text = "Error during execution: "..tostring(err2)
             end
         else
-            StatusLabel.Text = "Erreur de compilation: "..tostring(err)
+            StatusLabel.Text = "Compilation error: "..tostring(err)
         end
     else
-        StatusLabel.Text = "Erreur de téléchargement: "..tostring(result)
+        StatusLabel.Text = "Download error: "..tostring(result)
     end
 end
 
