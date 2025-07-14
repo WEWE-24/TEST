@@ -11,15 +11,15 @@ local scriptsList = {
         Url = "https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/inkgame.lua"
     },
     {
-        Name = "Autre Script",
-        Url = "https://raw.githubusercontent.com/tonnomgithub/tonrepo/main/autrescript.lua"
+        Name = "🟢​┃Obby But You’re On a Bike",
+        Url = "https://raw.githubusercontent.com/WEWE-24/obbyvelo/refs/heads/main/obbyvelo"
     },
     {
-        Name = "Fly Script",
+        Name = "🔴​​┃Soon",
         Url = "https://raw.githubusercontent.com/tonnomgithub/tonrepo/main/fly.lua"
     },
     {
-        Name = "Speed Hack",
+        Name = "🔴​​┃Soon",
         Url = "https://raw.githubusercontent.com/tonnomgithub/tonrepo/main/speed.lua"
     }
 }
