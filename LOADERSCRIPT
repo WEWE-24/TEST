@@ -30,8 +30,8 @@ local scriptsList = {
         Name = "🟢​​┃Slap battle",
         Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle"
     },
-        Name = "🟢​​┃Brook",
-        Url = "https://raw.githubusercontent.com/WEWE-24/Brook/refs/heads/main/brookk"
+        Name = "🟢​​┃test",
+        Url = "https://raw.githubusercontent.com/WEWE-24/Brook/refs/heads/main/test"
     }
 }
 local ScreenGui = Instance.new("ScreenGui")
