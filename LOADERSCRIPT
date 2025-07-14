@@ -21,9 +21,12 @@ local scriptsList = {
     {
         Name = "🟢​​┃Musical Chairs 🎵🪑",
         Url = "https://raw.githubusercontent.com/WEWE-24/Chaises/refs/heads/main/chaises"
+    },
+    {
+        Name = "🟢​​┃+1 Speed Escape",
+        Url = "https://raw.githubusercontent.com/WEWE-24/Speed-Escape/refs/heads/main/Speedescape"
     }
 }
-
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScriptLoaderGui"
 ScreenGui.ResetOnSpawn = false
