@@ -1,9 +1,11 @@
+game:SetLocaleId("en-us") -- Forcer la langue anglaise
+
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local UserInputService = game:GetService("UserInputService")
-local menuOpen = false
 local TweenService = game:GetService("TweenService")
+local menuOpen = false
 
 local scriptsList = {
     {
@@ -31,6 +33,7 @@ local scriptsList = {
         Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle"
     }
 }
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScriptLoaderGui"
 ScreenGui.ResetOnSpawn = false
@@ -47,7 +50,7 @@ Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 Frame.Active = true
 Frame.Draggable = true
 
--- Barre de titre
+-- Title Bar
 local TitleBar = Instance.new("Frame")
 TitleBar.Size = UDim2.new(1, 0, 0, 40)
 TitleBar.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
@@ -63,6 +66,7 @@ TitleLabel.TextColor3 = Color3.new(1, 1, 1)
 TitleLabel.Font = Enum.Font.GothamBold
 TitleLabel.TextSize = 20
 TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+TitleLabel.TextLocalized = false
 TitleLabel.Parent = TitleBar
 
 local UnloadButton = Instance.new("TextButton")
@@ -74,6 +78,7 @@ UnloadButton.Text = "Unload"
 UnloadButton.Font = Enum.Font.GothamBold
 UnloadButton.TextSize = 16
 UnloadButton.AutoButtonColor = false
+UnloadButton.TextLocalized = false
 UnloadButton.Parent = TitleBar
 UnloadButton.ClipsDescendants = true
 
@@ -87,8 +92,7 @@ UnloadButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
-
--- Zone de recherche
+-- Search Box
 local SearchBox = Instance.new("TextBox")
 SearchBox.Size = UDim2.new(1, -20, 0, 30)
 SearchBox.Position = UDim2.new(0, 10, 0, 45)
@@ -98,11 +102,11 @@ SearchBox.Font = Enum.Font.Gotham
 SearchBox.PlaceholderText = "Search for a script..."
 SearchBox.Text = ""
 SearchBox.TextSize = 16
-
 SearchBox.ClearTextOnFocus = false
+SearchBox.TextLocalized = false
 SearchBox.Parent = Frame
 
--- Container pour les boutons de scripts
+-- Button container
 local ButtonContainer = Instance.new("ScrollingFrame")
 ButtonContainer.Size = UDim2.new(1, -20, 1, -110)
 ButtonContainer.Position = UDim2.new(0, 10, 0, 80)
@@ -125,9 +129,10 @@ StatusLabel.Font = Enum.Font.Gotham
 StatusLabel.TextSize = 14
 StatusLabel.Text = "Prêt."
 StatusLabel.TextXAlignment = Enum.TextXAlignment.Left
+StatusLabel.TextLocalized = false
 StatusLabel.Parent = Frame
 
--- Fonction pour charger et exécuter le script depuis une URL
+-- Function to execute remote script
 local function executeScriptFromUrl(url)
     StatusLabel.Text = "Downloading in progress..."
     local success, result = pcall(function()
@@ -163,6 +168,7 @@ local function createButton(scriptInfo)
     button.TextSize = 18
     button.Text = scriptInfo.Name
     button.AutoButtonColor = false
+    button.TextLocalized = false
     button.Parent = ButtonContainer
 
     button.MouseEnter:Connect(function()
@@ -181,12 +187,12 @@ end
 
 local function refreshButtons(filterText)
     filterText = filterText:lower()
-    for i, btnData in ipairs(buttons) do
+    for _, btnData in ipairs(buttons) do
         local visible = btnData.ScriptInfo.Name:lower():find(filterText) ~= nil
         btnData.Button.Visible = visible
     end
-    -- Ajuster la taille du Canvas de défilement selon les boutons visibles
-    task.wait(0.05) -- léger délai pour que Visible soit pris en compte
+
+    task.wait(0.05)
     local contentSize = 0
     for _, btnData in ipairs(buttons) do
         if btnData.Button.Visible then
@@ -196,23 +202,23 @@ local function refreshButtons(filterText)
     ButtonContainer.CanvasSize = UDim2.new(0, 0, 0, contentSize)
 end
 
--- Créer tous les boutons au début
+-- Create all buttons
 for _, scriptInfo in ipairs(scriptsList) do
     local btn = createButton(scriptInfo)
     table.insert(buttons, {Button = btn, ScriptInfo = scriptInfo})
 end
 
--- Mise à jour de la liste à chaque changement dans la barre de recherche
+-- Filter buttons on search input
 SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
     refreshButtons(SearchBox.Text)
 end)
 
+-- Menu open/close with RightShift
 local function openMenu()
     Frame.Visible = true
     local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
     local tweenSize = TweenService:Create(Frame, tweenInfo, {Size = UDim2.new(0, 350, 0, 360)})
     local tweenBg = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 0})
-
     tweenSize:Play()
     tweenBg:Play()
 end
@@ -221,27 +227,24 @@ local function closeMenu()
     local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
     local tweenSize = TweenService:Create(Frame, tweenInfo, {Size = UDim2.new(0, 350, 0, 0)})
     local tweenBg = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 1})
-
     tweenSize:Play()
     tweenBg:Play()
-
     tweenSize.Completed:Connect(function()
         Frame.Visible = false
     end)
 end
-
 
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
     if input.KeyCode == Enum.KeyCode.RightShift then
         if menuOpen then
             closeMenu()
-            menuOpen = false
         else
             openMenu()
-            menuOpen = true
         end
+        menuOpen = not menuOpen
     end
 end)
--- Initialiser l'affichage
+
+-- Initial display
 refreshButtons("")
