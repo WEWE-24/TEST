@@ -19,8 +19,8 @@ local scriptsList = {
         Url = "https://raw.githubusercontent.com/WEWE-24/chute-libre/refs/heads/main/chutelibre"
     },
     {
-        Name = "🔴​​┃Soon",
-        Url = "https://raw.githubusercontent.com/tonnomgithub/tonrepo/main/speed.lua"
+        Name = "🟢​​┃Musical Chairs 🎵🪑",
+        Url = "https://raw.githubusercontent.com/WEWE-24/Chaises/refs/heads/main/chaises"
     }
 }
 
