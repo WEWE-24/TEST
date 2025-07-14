@@ -1,8 +1,8 @@
-
 --// SERVICES
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 
 --// CONFIG DES SCRIPTS
@@ -188,3 +188,17 @@ end)
 
 -- Lancer le menu tout de suite
 refreshButtons("")
+
+--// GESTION DU SHIFT DROIT POUR OUVRIR / FERMER LE MENU
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end -- Ignore si le jeu gère déjà l'input
+
+    if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == Enum.KeyCode.RightShift then
+        Frame.Visible = not Frame.Visible
+        if Frame.Visible then
+            StatusLabel.Text = "Menu ouvert."
+        else
+            StatusLabel.Text = "Menu fermé."
+        end
+    end
+end)
