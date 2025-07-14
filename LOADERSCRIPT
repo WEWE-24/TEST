@@ -92,8 +92,9 @@ SearchBox.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
 SearchBox.TextColor3 = Color3.new(1, 1, 1)
 SearchBox.Font = Enum.Font.Gotham
 SearchBox.PlaceholderText = "Search for a script..."
-TextBox.Text = ""
+SearchBox.Text = ""
 SearchBox.TextSize = 16
+
 SearchBox.ClearTextOnFocus = false
 SearchBox.Parent = Frame
 
