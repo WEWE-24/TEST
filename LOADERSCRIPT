@@ -29,6 +29,7 @@ local scriptsList = {
     {
         Name = "🟢​​┃Slap battle",
         Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle"
+    },    
     {
         Name = "🟢​​┃Brookhaven RP",
         Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle"
