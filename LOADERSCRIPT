@@ -1,39 +1,22 @@
-game:SetLocaleId("en-us") -- Forcer la langue anglaise
 
+--// SERVICES
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
-local menuOpen = false
+local LocalPlayer = Players.LocalPlayer
 
+--// CONFIG DES SCRIPTS
 local scriptsList = {
-    {
-        Name = "🟢​┃INK GAME",
-        Url = "https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/inkgame.lua"
-    },
-    {
-        Name = "🟢​┃Obby But You’re On a Bike",
-        Url = "https://raw.githubusercontent.com/WEWE-24/obbyvelo/refs/heads/main/obbyvelo"
-    },
-    {
-        Name = "🟢​​┃The Dropper ✨ [130+ LEVELS!]",
-        Url = "https://raw.githubusercontent.com/WEWE-24/chute-libre/refs/heads/main/chutelibre"
-    },
-    {
-        Name = "🟢​​┃Musical Chairs 🎵🪑",
-        Url = "https://raw.githubusercontent.com/WEWE-24/Chaises/refs/heads/main/chaises"
-    },
-    {
-        Name = "🟢​​┃+1 Speed Escape",
-        Url = "https://raw.githubusercontent.com/WEWE-24/Speed-Escape/refs/heads/main/Speedescape"
-    },
-    {
-        Name = "🟢​​┃Slap battle",
-        Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle"
-    }
+    { Name = "🟢┃INK GAME", Url = "https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/inkgame.lua" },
+    { Name = "🟢┃Obby But You’re On a Bike", Url = "https://raw.githubusercontent.com/WEWE-24/obbyvelo/refs/heads/main/obbyvelo" },
+    { Name = "🟢┃The Dropper ✨ [130+ LEVELS!]", Url = "https://raw.githubusercontent.com/WEWE-24/chute-libre/refs/heads/main/chutelibre" },
+    { Name = "🟢┃Musical Chairs 🎵🪑", Url = "https://raw.githubusercontent.com/WEWE-24/Chaises/refs/heads/main/chaises" },
+    { Name = "🟢┃+1 Spe\u{200B}ed Esca\u{200B}pe", Url = "https://raw.githubusercontent.com/WEWE-24/Speed-Escape/refs/heads/main/Speedescape" },
+    { Name = "🟢┃Slap battle", Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle" },
+	{ Name = "🟢┃Brookhaven", Url = "https://raw.githubusercontent.com/WEWE-24/Brook/refs/heads/main/brookk" },
 }
 
+--// GUI PRINCIPALE
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScriptLoaderGui"
 ScreenGui.ResetOnSpawn = false
@@ -44,13 +27,14 @@ Frame.Size = UDim2.new(0, 350, 0, 360)
 Frame.Position = UDim2.new(0.5, -175, 0.5, -180)
 Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
 Frame.BorderSizePixel = 0
-Frame.Parent = ScreenGui
-Frame.ClipsDescendants = true
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 Frame.Active = true
 Frame.Draggable = true
+Frame.Visible = true -- 👈 visible par défaut
+Frame.Parent = ScreenGui
+Frame.ClipsDescendants = true
 
--- Title Bar
+--// BARRE DE TITRE
 local TitleBar = Instance.new("Frame")
 TitleBar.Size = UDim2.new(1, 0, 0, 40)
 TitleBar.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
@@ -66,7 +50,6 @@ TitleLabel.TextColor3 = Color3.new(1, 1, 1)
 TitleLabel.Font = Enum.Font.GothamBold
 TitleLabel.TextSize = 20
 TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
-TitleLabel.TextLocalized = false
 TitleLabel.Parent = TitleBar
 
 local UnloadButton = Instance.new("TextButton")
@@ -78,9 +61,7 @@ UnloadButton.Text = "Unload"
 UnloadButton.Font = Enum.Font.GothamBold
 UnloadButton.TextSize = 16
 UnloadButton.AutoButtonColor = false
-UnloadButton.TextLocalized = false
 UnloadButton.Parent = TitleBar
-UnloadButton.ClipsDescendants = true
 
 UnloadButton.MouseEnter:Connect(function()
     UnloadButton.BackgroundColor3 = Color3.fromRGB(255, 70, 70)
@@ -92,7 +73,7 @@ UnloadButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
--- Search Box
+--// BARRE DE RECHERCHE
 local SearchBox = Instance.new("TextBox")
 SearchBox.Size = UDim2.new(1, -20, 0, 30)
 SearchBox.Position = UDim2.new(0, 10, 0, 45)
@@ -103,18 +84,17 @@ SearchBox.PlaceholderText = "Search for a script..."
 SearchBox.Text = ""
 SearchBox.TextSize = 16
 SearchBox.ClearTextOnFocus = false
-SearchBox.TextLocalized = false
 SearchBox.Parent = Frame
 
--- Button container
+--// CONTAINER DES BOUTONS
 local ButtonContainer = Instance.new("ScrollingFrame")
 ButtonContainer.Size = UDim2.new(1, -20, 1, -110)
 ButtonContainer.Position = UDim2.new(0, 10, 0, 80)
 ButtonContainer.BackgroundTransparency = 1
 ButtonContainer.BorderSizePixel = 0
 ButtonContainer.ScrollBarThickness = 6
-ButtonContainer.Parent = Frame
 ButtonContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
+ButtonContainer.Parent = Frame
 
 local UIListLayout = Instance.new("UIListLayout")
 UIListLayout.Padding = UDim.new(0, 8)
@@ -129,36 +109,35 @@ StatusLabel.Font = Enum.Font.Gotham
 StatusLabel.TextSize = 14
 StatusLabel.Text = "Prêt."
 StatusLabel.TextXAlignment = Enum.TextXAlignment.Left
-StatusLabel.TextLocalized = false
 StatusLabel.Parent = Frame
 
--- Function to execute remote script
+--// CHARGEMENT DU SCRIPT
 local function executeScriptFromUrl(url)
-    StatusLabel.Text = "Downloading in progress..."
+    StatusLabel.Text = "Téléchargement en cours..."
     local success, result = pcall(function()
         return game:HttpGet(url)
     end)
 
     if success then
-        StatusLabel.Text = "Running the script..."
+        StatusLabel.Text = "Exécution du script..."
         local func, err = loadstring(result)
         if func then
-            local ok, err2 = pcall(func)
+            local ok, execErr = pcall(func)
             if ok then
-                StatusLabel.Text = "Script executed successfully."
+                StatusLabel.Text = "✅ Script exécuté avec succès."
             else
-                StatusLabel.Text = "Error during execution: "..tostring(err2)
+                StatusLabel.Text = "❌ Erreur d'exécution : "..tostring(execErr)
             end
         else
-            StatusLabel.Text = "Compilation error: "..tostring(err)
+            StatusLabel.Text = "❌ Erreur de compilation : "..tostring(err)
         end
     else
-        StatusLabel.Text = "Download error: "..tostring(result)
+        StatusLabel.Text = "❌ Erreur de téléchargement : "..tostring(result)
     end
 end
 
+--// CRÉATION DES BOUTONS
 local buttons = {}
-
 local function createButton(scriptInfo)
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(1, 0, 0, 40)
@@ -168,7 +147,6 @@ local function createButton(scriptInfo)
     button.TextSize = 18
     button.Text = scriptInfo.Name
     button.AutoButtonColor = false
-    button.TextLocalized = false
     button.Parent = ButtonContainer
 
     button.MouseEnter:Connect(function()
@@ -177,7 +155,6 @@ local function createButton(scriptInfo)
     button.MouseLeave:Connect(function()
         button.BackgroundColor3 = Color3.fromRGB(60, 60, 70)
     end)
-
     button.MouseButton1Click:Connect(function()
         executeScriptFromUrl(scriptInfo.Url)
     end)
@@ -187,64 +164,27 @@ end
 
 local function refreshButtons(filterText)
     filterText = filterText:lower()
-    for _, btnData in ipairs(buttons) do
-        local visible = btnData.ScriptInfo.Name:lower():find(filterText) ~= nil
-        btnData.Button.Visible = visible
-    end
-
-    task.wait(0.05)
     local contentSize = 0
     for _, btnData in ipairs(buttons) do
-        if btnData.Button.Visible then
+        local match = btnData.ScriptInfo.Name:lower():find(filterText) ~= nil
+        btnData.Button.Visible = match
+        if match then
             contentSize = contentSize + btnData.Button.AbsoluteSize.Y + UIListLayout.Padding.Offset
         end
     end
     ButtonContainer.CanvasSize = UDim2.new(0, 0, 0, contentSize)
 end
 
--- Create all buttons
+-- Créer les boutons au départ
 for _, scriptInfo in ipairs(scriptsList) do
     local btn = createButton(scriptInfo)
     table.insert(buttons, {Button = btn, ScriptInfo = scriptInfo})
 end
 
--- Filter buttons on search input
+-- Mise à jour avec la barre de recherche
 SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
     refreshButtons(SearchBox.Text)
 end)
 
--- Menu open/close with RightShift
-local function openMenu()
-    Frame.Visible = true
-    local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-    local tweenSize = TweenService:Create(Frame, tweenInfo, {Size = UDim2.new(0, 350, 0, 360)})
-    local tweenBg = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 0})
-    tweenSize:Play()
-    tweenBg:Play()
-end
-
-local function closeMenu()
-    local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-    local tweenSize = TweenService:Create(Frame, tweenInfo, {Size = UDim2.new(0, 350, 0, 0)})
-    local tweenBg = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 1})
-    tweenSize:Play()
-    tweenBg:Play()
-    tweenSize.Completed:Connect(function()
-        Frame.Visible = false
-    end)
-end
-
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if gameProcessed then return end
-    if input.KeyCode == Enum.KeyCode.RightShift then
-        if menuOpen then
-            closeMenu()
-        else
-            openMenu()
-        end
-        menuOpen = not menuOpen
-    end
-end)
-
--- Initial display
+-- Lancer le menu tout de suite
 refreshButtons("")
