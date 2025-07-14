@@ -7,7 +7,7 @@ local LocalPlayer = Players.LocalPlayer
 
 --// CONFIG DES SCRIPTS
 local scriptsList = {
-    { Name = "🟢┃INK GAME", Url = "https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/inkgame.lua" },
+    { Name = "🟢┃INK GAME", Url = "https://raw.githubusercontent.com/WEWE-24/ink/refs/heads/main/ink" },
     { Name = "🟢┃Obby But You’re On a Bike", Url = "https://raw.githubusercontent.com/WEWE-24/obbyvelo/refs/heads/main/obbyvelo" },
     { Name = "🟢┃The Dropper ✨ [130+ LEVELS!]", Url = "https://raw.githubusercontent.com/WEWE-24/chute-libre/refs/heads/main/chutelibre" },
     { Name = "🟢┃Musical Chairs 🎵🪑", Url = "https://raw.githubusercontent.com/WEWE-24/Chaises/refs/heads/main/chaises" },
