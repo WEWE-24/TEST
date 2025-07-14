@@ -189,16 +189,12 @@ end)
 -- Lancer le menu tout de suite
 refreshButtons("")
 
---// GESTION DU SHIFT DROIT POUR OUVRIR / FERMER LE MENU
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if gameProcessed then return end -- Ignore si le jeu gère déjà l'input
-
-    if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == Enum.KeyCode.RightShift then
-        Frame.Visible = not Frame.Visible
-        if Frame.Visible then
-            StatusLabel.Text = "Menu ouvert."
-        else
-            StatusLabel.Text = "Menu fermé."
+    if gameProcessed then return end
+    if input.KeyCode == Enum.KeyCode.RightShift then
+        if not SearchBox:IsFocused() then
+            Frame.Visible = not Frame.Visible
+            StatusLabel.Text = Frame.Visible and "Menu ouvert." or "Menu fermé."
         end
     end
 end)
