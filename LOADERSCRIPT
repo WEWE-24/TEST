@@ -17,6 +17,7 @@ local scriptsList = {
     { Name = "🟢┃The Ground is LAVA", Url = "https://raw.githubusercontent.com/WEWE-24/The-Ground-is-LAVA/refs/heads/main/trbfe" },
     { Name = "🟢┃Super\u{200B}hero\u{200B} Simulator", Url = "https://pastebin.com/raw/5jKEs7iB" },
     { Name = "🟢┃+1 fat every click", Url = "https://raw.githubusercontent.com/WEWE-24/food/refs/heads/main/foond" },
+    { Name = "🟢┃+1 Every second you get +1 jump", Url = "https://raw.githubusercontent.com/WEWE-24/saut/refs/heads/main/saut" },
 }
 
 --// GUI PRINCIPALE
