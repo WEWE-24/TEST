@@ -14,6 +14,7 @@ local scriptsList = {
     { Name = "🟢┃+1 Spe\u{200B}ed Esca\u{200B}pe", Url = "https://raw.githubusercontent.com/WEWE-24/Speed-Escape/refs/heads/main/Speedescape" },
     { Name = "🟢┃Slap battle", Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle" },
 	{ Name = "🟢┃Brookhaven", Url = "https://raw.githubusercontent.com/WEWE-24/Brook/refs/heads/main/brookk" },
+    { Name = "🟢┃The Ground is LAVA", Url = "https://raw.githubusercontent.com/WEWE-24/The-Ground-is-LAVA/refs/heads/main/trbfe" },
 }
 
 --// GUI PRINCIPALE
