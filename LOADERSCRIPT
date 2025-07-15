@@ -15,7 +15,7 @@ local scriptsList = {
     { Name = "🟢┃Slap battle", Url = "https://raw.githubusercontent.com/WEWE-24/slap-battle/refs/heads/main/slapbattle" },
 	{ Name = "🟢┃Brookhaven", Url = "https://raw.githubusercontent.com/WEWE-24/Brook/refs/heads/main/brookk" },
     { Name = "🟢┃The Ground is LAVA", Url = "https://raw.githubusercontent.com/WEWE-24/The-Ground-is-LAVA/refs/heads/main/trbfe" },
-    { Name = "🟢┃Superhero Simulator", Url = "https://pastebin.com/raw/5jKEs7iB" },
+    { Name = "🟢┃🟢┃Super\u{200B}hero\u{200B} Simulator", Url = "https://pastebin.com/raw/5jKEs7iB" },
 }
 
 --// GUI PRINCIPALE
