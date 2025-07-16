@@ -22,6 +22,7 @@ local scriptsList = {
     { Name = "🟢┃Italian Brainrot Speed Clicker", Url = "https://raw.githubusercontent.com/WEWE-24/1brain/refs/heads/main/brain%C2%B01" },
     { Name = "🟢┃I wanna run away tower", Url = "https://raw.githubusercontent.com/WEWE-24/TOWERRUN/refs/heads/main/TowerRUN" },
     { Name = "🟢┃House tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/House/refs/heads/main/House" },
+    { Name = "🟢┃Mega Obby Fun", Url = "https://raw.githubusercontent.com/WEWE-24/obbyfun/refs/heads/main/obbyfun" },
 }
 
 --// GUI PRINCIPALE
