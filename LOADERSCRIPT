@@ -25,6 +25,7 @@ local scriptsList = {
     { Name = "🟢┃Mega Obby Fun", Url = "https://raw.githubusercontent.com/WEWE-24/obbyfun/refs/heads/main/obbyfun" },
     { Name = "🟢┃Millionaire Empire Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/million/refs/heads/main/million" },
     { Name = "🟢┃Heist Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/HeistMON/refs/heads/main/hesi" },
+    { Name = "🟢┃Apocalypse Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/apo/refs/heads/main/apo" },
 }
 
 --// RESET UI
