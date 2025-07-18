@@ -26,6 +26,7 @@ local scriptsList = {
     { Name = "🟢┃Millionaire Empire Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/million/refs/heads/main/million" },
     { Name = "🟢┃Heist Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/HeistMON/refs/heads/main/hesi" },
     { Name = "🟢┃Apocalypse Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/apo/refs/heads/main/apo" },
+    { Name = "🟢┃The glass bridge of $1000000", Url = "https://raw.githubusercontent.com/WEWE-24/bridge/refs/heads/main/bridge" },
 }
 
 --// RESET UI
