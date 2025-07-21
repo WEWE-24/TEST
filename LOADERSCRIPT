@@ -29,6 +29,7 @@ local scriptsList = {
     { Name = "🟢┃The glass bridge of $1000000", Url = "https://raw.githubusercontent.com/WEWE-24/bridge/refs/heads/main/bridge" },
     { Name = "🟢┃Steal Animals", Url = "https://raw.githubusercontent.com/WEWE-24/srealanim/refs/heads/main/sr" },
     { Name = "🟢┃Grow a job", Url = "https://raw.githubusercontent.com/WEWE-24/gowjob/refs/heads/main/job" },
+    { Name = "🟢┃Mega Princess Tycoon", Url = "https://github.com/WEWE-24/princes/edit/main/prince" },
 }
 
 --// RESET UI
