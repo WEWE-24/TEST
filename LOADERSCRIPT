@@ -30,6 +30,7 @@ local scriptsList = {
     { Name = "🟢┃Steal Animals", Url = "https://raw.githubusercontent.com/WEWE-24/srealanim/refs/heads/main/sr" },
     { Name = "🟢┃Grow a job", Url = "https://raw.githubusercontent.com/WEWE-24/gowjob/refs/heads/main/job" },
     { Name = "🟢┃Mega Princess Tycoon", Url = "https://github.com/WEWE-24/princes/edit/main/prince" },
+    { Name = "🟢┃SteaI a Worker", Url = "https://raw.githubusercontent.com/Kyereal/Scripts/refs/heads/main/Steal%20a%20Worker" },
 }
 
 --// RESET UI
