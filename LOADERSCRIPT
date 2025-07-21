@@ -27,6 +27,8 @@ local scriptsList = {
     { Name = "🟢┃Heist Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/HeistMON/refs/heads/main/hesi" },
     { Name = "🟢┃Apocalypse Tycoon", Url = "https://raw.githubusercontent.com/WEWE-24/apo/refs/heads/main/apo" },
     { Name = "🟢┃The glass bridge of $1000000", Url = "https://raw.githubusercontent.com/WEWE-24/bridge/refs/heads/main/bridge" },
+    { Name = "🟢┃Steal Animals", Url = "https://raw.githubusercontent.com/WEWE-24/bridge/refs/heads/main/bridge" },
+    { Name = "🟢┃Grow a job", Url = "https://raw.githubusercontent.com/WEWE-24/bridge/refs/heads/main/bridge" },
 }
 
 --// RESET UI
